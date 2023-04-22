@@ -1,1 +1,62 @@
-<p>Copyright 2023, Alptekin Caglar</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fire Dude Support Page</title>
+	<style>
+		form label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		form input, form textarea {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-bottom: 20px;
+		}
+
+		form textarea {
+			height: 150px;
+		}
+
+		form button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Fire Dude Support Page</h1>
+
+	<h2>Frequently Asked Questions</h2>
+	<dl>
+		<dt>Q: What is your app all about?</dt>
+		<dd>A: Our app helps users do X, Y, and Z.</dd>
+
+		<dt>Q: How do I get started with the app?</dt>
+		<dd>A: You can download the app from the App Store or Google Play, and then follow the setup instructions.</dd>
+
+		<dt>Q: I want to see my collected data. Where can I find this?</dt>
+		<dd>A: Please check our Privacy Policy.</dd>
+	</dl>
+    
+    <h1>Contact Us</h1>
+	<form method="post" action="submit-form.php">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required><br><br>
+		
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required><br><br>
+		
+		<label for="message">Message:</label>
+		<textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
+		
+		<button type="submit" input type="submit">Send Message</button>
+	</form>
+</body>
+</html>
