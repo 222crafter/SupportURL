@@ -1,94 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Contact Us</title>
+	<title>Fire Dude Support Page</title>
+	<style>
+		form label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		form input, form textarea {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-bottom: 20px;
+		}
+
+		form textarea {
+			height: 150px;
+		}
+
+		form button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-	<h1>Contact Us</h1>
-	<?php
-	// define variables and set to empty values
-	$name = $email = $message = "";
-	$nameErr = $emailErr = $messageErr = "";
+	<h1>Fire Dude Support Page</h1>
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// validate form fields
-		if (empty($_POST["name"])) {
-			$nameErr = "Name is required";
-		} else {
-			$name = test_input($_POST["name"]);
-			// check if name only contains letters and whitespace
-			if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-				$nameErr = "Only letters and white space allowed"; 
-			}
-		}
+	<h2>Frequently Asked Questions</h2>
+	<dl>
+		<dt>Q: What is your app all about?</dt>
+		<dd>A: Our app helps users do X, Y, and Z.</dd>
 
-		if (empty($_POST["email"])) {
-			$emailErr = "Email is required";
-		} else {
-			$email = test_input($_POST["email"]);
-			// check if email address is well-formed
-			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				$emailErr = "Invalid email format"; 
-			}
-		}
+		<dt>Q: How do I get started with the app?</dt>
+		<dd>A: You can download the app from the App Store or Google Play, and then follow the setup instructions.</dd>
 
-		if (empty($_POST["message"])) {
-			$messageErr = "Message is required";
-		} else {
-			$message = test_input($_POST["message"]);
-		}
-
-		// if no errors, do something with the form data
-		if (empty($nameErr) && empty($emailErr) && empty($messageErr)) {
-			// send email
-			$to = "youremail@example.com";
-			$subject = "New message from website contact form";
-			$message = "Name: " . $name . "\n\n" .
-					   "Email: " . $email . "\n\n" .
-					   "Message: " . $message;
-			$headers = "From: " . $email;
-
-			if (mail($to, $subject, $message, $headers)) {
-				echo "<p>Thank you for your message, $name! We'll get back to you soon.</p>";
-			} else {
-				echo "<p>Sorry, there was an error sending your message. Please try again later.</p>";
-			}
-
-			// store form data in database
-			$servername = "localhost";
-			$username = "username";
-			$password = "password";
-			$dbname = "myDB";
-
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
-
-			// Check connection
-			if ($conn->connect_error) {
-			    die("Connection failed: " . $conn->connect_error);
-			}
-
-			// Insert form data into database
-			$sql = "INSERT INTO contacts (name, email, message)
-			        VALUES ('$name', '$email', '$message')";
-
-			if ($conn->query($sql) === TRUE) {
-			    // record created successfully
-			} else {
-			    echo "Error: " . $sql . "<br>" . $conn->error;
-			}
-
-			$conn->close();
-		}
-	}
-
-	function test_input($data) {
-		$data = trim($data);
-		$data = stripslashes($data);
-		$data = htmlspecialchars($data);
-		return $data;
-	}
-	?>
-	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+		<dt>Q: I want to see my collected data. Where can I find this?</dt>
+		<dd>A: Please check our Privacy Policy.</dd>
+	</dl>
+    
+    <h1>Contact Us</h1>
+	<form method="post" action="submit-form.php">
 		<label for="name">Name:</label>
-	
+		<input type="text" id="name" name="name" required><br><br>
+		
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required><br><br>
+		
+		<label for="message">Message:</label>
+		<textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
+		
+		<button type="submit" input type="submit">Send Message</button>
+	</form>
+</body>
+</html>
