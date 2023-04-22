@@ -1,30 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Get the form data
-  $name = $_POST["name"];
-  $email = $_POST["email"];
-  $message = $_POST["message"];
-
-  // Set the recipient email address
-	$to = "ymn.caglar@gmail.com";
-
-	// Set the email subject
-	$subject = "[SUPER IMPORTANT] NEW MESSAGE ABOUT FIRE DUDE APP!!";
-
-	// Set the email message
-	$message = "Name: " . $name . "\r\n";
-	$message .= "Email: " . $email . "\r\n";
-	$message .= "Message: " . $message . "\r\n";
-
-	// Set the email headers
-	$headers = "From: " . $email . "\r\n";
-	$headers .= "Reply-To: " . $email . "\r\n";
-
-	// Send the email
-	mail($to, $subject, $message, $headers);
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</dl>
     
     <h1>Contact Us</h1>
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+	<form action="https://formsubmit.co/your@email.com" method="POST">
     		<label for="name">Your First and Last Name:</label>
     		<input type="text" name="name" id="name" required>
     		<br>
